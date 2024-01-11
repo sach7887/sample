@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Traffic Light </title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                background-color: #8fcef5;
+                display: flex;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                margin: 0%;
+               
+            }
+            .container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                width: 85px;
+                height: 250px;
+                padding: 15px;
+                background-color: #2d3e55;
+                border-radius: 50px;
+                margin-left: 40%;
+            }
+            .circle{
+                position: relative;
+                background-color: rgba(0, 0, 0, 3);
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+
+            }
+            .circle::after{
+                border-right: 4px solid rgba(216, 209, 215, 0.6);
+                position: absolute;
+                content: '';
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                top: 5px;
+                left: 4px;
+
+            }
+            .circle.red{
+                background-color: #c0392b;
+                box-shadow: 0 0 20px 5px #c0392b;
+            }
+            .circle.yellow{
+                background-color:yellow;
+                box-shadow: 0 0 20px 5px yellow;
+                
+            }
+            .circle.green{
+                background-color: rgb(47, 255, 134);
+                box-shadow: 0 0 20px 5px rgb(47, 255, 102);
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle red" color="red"></div>
+        <div class="circle" color="yellow"></div>
+        <div class="circle" color="green"></div>
+    
+    </div>
+    <script>
+        const circles = document.querySelectorAll('.circle');
+        let activeLight = 0;
+        setInterval(changeLight, 1000);
+        function changeLight(){
+            circles[activeLight].className = 'circle';
+            activeLight++;
+            if(activeLight > 2) {
+                activeLight = 0;
+            }
+            const currentLight = circles[activeLight];
+            currentLight.classList.add(currentLight.getAttribute('color'));
+            
+        } 
+    </script>
+  
+</body>
+</html>
